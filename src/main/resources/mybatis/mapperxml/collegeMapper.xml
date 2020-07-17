@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.xuqian.xuqian.mapper.collegemapper">
+    <select id="queryForList" resultType="college">
+    select * from college
+  </select>
+
+    <select id="queryCollegeById" resultType="college">
+        select * from college where id = #{id}
+    </select>
+
+    <update id="updateCollege" parameterType="college">
+        update college set password = #{password} where username=#{username};
+    </update>
+
+    <insert id="addCollege" parameterType="college">
+        insert into college (username,password,state,college) values(#{username},#{password},#{state},#{college})
+    </insert>
+
+    <delete id="deleteCollege" parameterType="int">
+        delete from college where username = #{username}
+    </delete>
+</mapper>
