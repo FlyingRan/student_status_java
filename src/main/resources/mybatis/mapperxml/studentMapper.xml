@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.xuqian.xuqian.mapper.studentMapper">
+    <select id="studentLogin" resultType="student">
+    select * from student where sid = #{username} and password = #{password}
+  </select>
+    <select id="queryForList" resultType="student">
+        select * from student
+    </select>
+
+    <select id="queryForSome" resultType="student">
+        select *
+        from student
+         where sid like CONCAT('%',#{sid},'%') and
+         name like CONCAT('%',#{name},'%') and
+         sex like CONCAT('%',#{sex},'%') and
+         ecard like CONCAT('%',#{ecard},'%') and
+         college like CONCAT('%',#{college},'%') and
+         major_class like CONCAT('%',#{major_class},'%') and
+         inyear like CONCAT('%',#{inyear},'%') and
+         education like CONCAT('%',#{education},'%')
+    </select>
+    
+    <select id="queryForOne" resultType="student">
+        select * from student where sid = #{id} or ecard = #{id}
+    </select>
+
+    <insert id="addStudent" parameterType="student">
+        insert into student(sid,name,sex,college,major_class,ecard,inyear,education) values
+        (#{sid},#{name},#{sex},#{college},#{major_class},#{ecard},#{inyear},#{education})
+    </insert>
+
+    <update id="updateStudent" parameterType="student">
+        update student set name = #{name},sex=#{sex},major_class=#{major_class},college=#{college} where sid=#{sid};
+    </update>
+
+    <delete id="deleteStudent" parameterType="student">
+        delete from  student where sid = #{sid}
+    </delete>
+
+    <update id="addPunishment" parameterType="String">
+        update student set pulishment = #{punishment} where sid = #{sid};
+    </update>
+
+
+    <update id="changeState" parameterType="String">
+        update student set state = 0 where sid = #{sid}
+    </update>
+</mapper>

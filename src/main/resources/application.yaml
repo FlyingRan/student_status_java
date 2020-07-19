@@ -1,5 +1,6 @@
 server:
   port: 8081
+  max-http-header-size: 8192
 spring:
   datasource:
     username: root
@@ -9,3 +10,9 @@ spring:
 mybatis:
   type-aliases-package: online.xuqian.xuqian.pojo
   mapper-locations: classpath:mybatis/mapperxml/*.xml
+logging:
+    level:
+      online:
+        xuqian:
+          xuqian:
+            mapper: debug
